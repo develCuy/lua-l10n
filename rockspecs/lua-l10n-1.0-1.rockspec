@@ -1,5 +1,5 @@
 package = [[lua-l10n]]
-version = [[1.0-0]]
+version = [[1.0-1]]
 source = {
   url = [[git://github.com/develCuy/lua-l10n.git]],
   tag = [[1.0-1]],
