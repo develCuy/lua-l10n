@@ -22,7 +22,7 @@ local function translate(str, ...)
   if nil == db[str] then
     return
   end
-  local target = db[str][target_lang]
+  local target = db[str][target_lang] or str
   if target then
     local params = {...}
     return
