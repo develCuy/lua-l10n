@@ -6,27 +6,30 @@
 -- Storage for all available translations on runtime
 local db = {}
 
-local default_lang = [[default]] -- default language to translate to
+local target_lang -- language to translate to
 
 local function set_lang(lang)
-  default_lang = lang
+  target_lang = lang
 end
 
 local function translate(str, ...)
+  if nil == target_lang then
+    error [[l10n: target language not set. Example: l10n.set_lang 'es']]
+  end
   if [[string]] ~= type(str) then
     error [[l10n: Not a valid string provided!]]
   end
   if nil == db[str] then
     return
   end
-    local target = db[str][default_lang]
-    if target then
-      local params = {...}
-      return
-        nil ~= next(params) and
-        target:format(...) or
-        target
-    end
+  local target = db[str][target_lang]
+  if target then
+    local params = {...}
+    return
+      nil ~= next(params) and
+      target:format(...) or
+      target
+  end
 end
 
 local function add(params)
