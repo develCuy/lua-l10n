@@ -20,7 +20,8 @@ local function translate(str, ...)
     error [[l10n: Not a valid string provided!]]
   end
   if nil == db[str] then
-    return
+    io.stderr:write(("WARNING: Trying to translate an unknown string: '%s'\n"):format(str))
+    return str
   end
   local target = db[str][target_lang] or str
   if target then

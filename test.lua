@@ -11,3 +11,7 @@ l10n.add {[[world]], spa = [[mundo]]}
 print_r(l10n)
 
 assert(t([[Hello %s!]], t [[world]]) == [[¡Hola mundo!]])
+
+-- Throw a warning on unknown string
+local unknown_string = [[Would you translate this for me?]]
+assert(t(unknown_string) == unknown_string)
