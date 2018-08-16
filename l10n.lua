@@ -14,7 +14,7 @@ end
 
 local function translate(str, ...)
   if nil == target_lang then
-    error [[l10n: target language not set. Example: l10n.set_lang 'es']]
+    io.stderr:write "WARNING: l10n: target language not set. Example: l10n.set_lang 'es'\n"
   end
   if [[string]] ~= type(str) then
     error [[l10n: Not a valid string provided!]]
