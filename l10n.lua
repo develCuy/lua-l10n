@@ -22,8 +22,9 @@ local function translate(str, ...)
   if nil == db[str] then
     io.stderr:write(("WARNING: Trying to translate an unknown string: '%s'\n"):format(str))
   end
-  local target = (db[str] or {})[target_lang] or str
-  if target then
+  local target = (db[str] or {})[target_lang]
+  if nil == target then
+    target = str -- Pass source string when no target available
     io.stderr:write(("WARNING: No '%s' translation available for '%s'\n"):format(target_lang or [[]], str))
   end
   local params = {...}

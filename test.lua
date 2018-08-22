@@ -4,8 +4,10 @@ local print_r = sw_variable.print_r
 local l10n = require [[l10n]]
 local t = l10n.translate
 
+-- Throw a warning when default language is not set
 assert(t([[Hello %s!]], t [[world]]) == [[Hello world!]])
 
+-- Translate and format given string (no throw warnings)
 l10n.set_lang [[spa]]
 l10n.add {[[Hello %s!]], spa = [[¡Hola %s!]]}
 l10n.add {[[world]], spa = [[mundo]]}
