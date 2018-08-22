@@ -24,4 +24,9 @@ local missing_translation = [[Do you speak French?]]
 l10n.add {missing_translation, spa = [[¿Hablas francés?]]}
 assert(t(missing_translation) == missing_translation)
 
+-- Don't translate (no throw warning)
+l10n.set_source_lang [[eng]]
+l10n.set_lang [[eng]]
+assert(t([[Hello %s!]], t [[world]]) == [[Hello world!]])
+
 print_r(l10n.db)

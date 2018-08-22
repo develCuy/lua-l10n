@@ -12,6 +12,10 @@ local function set_lang(lang)
   target_lang = lang
 end
 
+local function set_source_lang(lang)
+  source_lang = lang
+end
+
 local function translate(str, ...)
   if nil == target_lang then
     io.stderr:write "WARNING: l10n: target language not set. Example: l10n.set_lang 'es'\n"
@@ -22,10 +26,16 @@ local function translate(str, ...)
   if nil == db[str] then
     io.stderr:write(("WARNING: Trying to translate an unknown string: '%s'\n"):format(str))
   end
-  local target = (db[str] or {})[target_lang]
-  if nil == target then
+
+  local target
+  if target_lang == source_lang then
     target = str -- Pass source string when no target available
-    io.stderr:write(("WARNING: No '%s' translation available for '%s'\n"):format(target_lang or [[]], str))
+  else
+    target = (db[str] or {})[target_lang]
+    if nil == target then
+      target = str
+      io.stderr:write(("WARNING: No '%s' translation available for '%s'\n"):format(target_lang or [[]], str))
+    end
   end
   local params = {...}
   return
@@ -53,5 +63,6 @@ return {
   add = add,
   db = db,
   set_lang = set_lang,
+  set_source_lang = set_source_lang,
   translate = translate,
 }
