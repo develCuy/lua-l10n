@@ -1,7 +1,13 @@
------------------------------------------------------------------------------
--- Localization (l10n) for the Lua language.
--- Author: Fernando Paredes Garcia (fernando@develcuy.com)
------------------------------------------------------------------------------
+--[[lit-meta
+  name = "develCuy/lua-l10n"
+  version = "1.0.0"
+  dependencies = {}
+  description = "Localization (l10n) for the Lua language"
+  tags = { "lua", "localization", "localize" }
+  license = "AGPL-3.0"
+  author = { name = "Fernando Paredes Garcia", email = "fernando@develcuy.com" }
+  homepage = "https://github.com/develCuy/l10n-lua"
+]]
 
 -- Storage for all available translations on runtime
 local db = {}
